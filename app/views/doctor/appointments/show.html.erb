@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h3 class="table-dark col-md-4 offset-md-4 text-center">DATA</h3><br>
+<div class="col-md-5 offset-md-5">
+  <p>
+    <strong>DOCTOR NAME:</strong>
+    <%= @appointment.doctor.name %>
+  </p>
+   
+  <p>
+    <strong>PATIENT NAME:</strong>
+    <%= @appointment.patient.name %>
+
+  </p>
+
+  <p>
+    <strong>START TIME:</strong>
+    <%= @appointment.start_time %>
+
+  </p>
+  <p>
+    <strong>END TIME:</strong>
+    <%= @appointment.end_time %>
+
+  </p>
+
+
+
+
+  <%= link_to 'Back', doctor_appointments_path ,class: "btn btn-outline-dark "%>
+</div>

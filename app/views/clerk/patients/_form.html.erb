@@ -1,0 +1,58 @@
+<%= form_for [:clerk,@patient]  do |form| %>
+ <div class="col-md-5 offset-md-5">
+      <% if patient.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+          <ul>
+          <% patient.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+       <p>
+        <%= form.label :NAME %><br>
+        <%= form.text_field :name, autofocus: true , placeholder: "Name"%>
+      
+      </p>
+     
+      <p>
+        <%= form.label :AGE %><br>
+        <%= form.select :age ,(18..40),include_blank: true %>
+      </p>
+
+      <p>
+        <%= form.label :WEIGHT  %><br>
+        <%= form.select :weight,(1..200),include_blank: true%>
+      </p>
+      
+      <p>
+        <%= form.label :DISEASE %><br>
+        <%= form.text_field :dis , placeholder: "DISEASE"%>
+      </p>
+
+
+      <div>
+        <%= form.label :PHONE %>
+        <%= form.text_field :phone , placeholder: "PHONE"%>
+
+      </div>
+      <div>
+        <%= form.label :ADDRESS %>
+        <%= form.text_field :address , placeholder: "HOME#BLOCK#CITY"%>
+
+      </div>
+      <div>
+        <%= form.label :DEPARTMENT %>
+        <%= form.select :department_id, Department.all.collect { |d| [ d.name, d.id ] }, include_blank: true %>
+
+      </div>
+
+    <br>
+     <div class="actions">
+        <%= form.submit class: "btn btn-outline-dark"%>
+      </div>
+    <% end %>
+</div>

@@ -1,0 +1,66 @@
+<div class="col-md-5 offset-md-5">
+
+  <%= form_for [:clerk, @staff]  do |form| %>
+    <% if staff.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
+
+        <ul>
+        <% staff.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+   
+    <p>
+      <%= form.label :NAME %><br>
+      <%= form.text_field :name , autofocus: true %>
+        <%#= form.validates_format_of :phone, :with => /^[0-9]*$/, :message => “Please use
+  only numbers”%>
+    </p>
+   
+    <p>
+      <%= form.label :TIME %><br>
+      <%#= form.datetime_select :time, selected: Date.today, min: 5.days.ago, max: 1.year.from_now %>
+      <%= form.datetime_select :time , ampm: true ,add_month_numbers: true, :start_year => Date.current.year, :end_year => Date.current.year + 2  ,include_blank: true %>
+
+    </p>
+    
+    <p>
+      <%= form.label :AGE %><br>
+      <%= form.select :age ,(18..40),include_blank: true %>
+    </p>
+
+     <p>
+      <%= form.label :duty %><br>
+      <%= form.select :duty ,['Nursing','Cleaining','Washing','Food_Area','security_Guard'], include_blank: true %>
+    </p>
+
+     <p>
+      <%= form.label :floor %><br>
+      <%= form.select :floor ,['Basement','Ground_Floor','First_Floor','Second_Floor','Third_Floor'], include_blank: true %>
+    </p>
+   
+    <div>
+      <%= form.label :WARD %>
+      <%= form.select :ward_id, Ward.all.collect { |d| [ d.wards_name, d.id ] }, include_blank: true %>
+
+    </div>
+    
+
+
+
+
+
+   <div class="actions">
+      <%= form.submit class: "btn btn-outline-dark"%>
+    </div>
+
+
+
+
+
+  <% end %>
+</div>

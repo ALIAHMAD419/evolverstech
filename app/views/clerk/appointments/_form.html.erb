@@ -1,0 +1,50 @@
+<div class="col-md-5 offset-md-5">
+  <%= form_for [:clerk, @appointment] do |f| %>
+    <% if appointment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+        <ul>
+        <% appointment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    
+  <%#= var = Date.current+5.year  %>
+    <div>
+      <%= f.label :DOCTORS %>
+      <%= f.select :doctor_id, Doctor.all.collect { |d| [ d.name, d.id ] } %><br>
+      <%= f.label :PATIENTS %>
+      <%= f.select :patient_id, Patient.all.collect { |p| [ p.name, p.id ] } %>
+    </div>
+
+    <%= f.label :examination_room %>
+    <%= f.select :room_id, Room.all.collect {|r|   [r.room, r.id] } ,include_blank: true%>
+    <br>
+    <%= f.label :START_TIME %>
+    <%= f.datetime_select :start_time,ampm: true ,add_month_numbers: true, :start_year => Date.current.year, 
+    :end_year => Date.current.year + 2  , class: 'form-control' %>
+    <br>
+    <%= f.label :END_TIME %>
+    <%= f.datetime_select :end_time, ampm: true ,add_month_numbers: true, :start_year => Date.current.year, :end_year => Date.current.year + 2 , class: 'form-control' %>
+
+  <br> <br>
+
+
+  <div class="actions">
+      <%= f.submit class: "btn btn-outline-dark"%>
+    </div>
+
+  <% end %>
+
+
+</div>
+
+
+
+
+
+

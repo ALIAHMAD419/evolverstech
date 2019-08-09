@@ -1,0 +1,24 @@
+<div class="col-md-5 offset-md-5">
+  <%= form_for [:clerk, @bill] do |form| %>
+    
+    <% if bill.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
+
+        <ul>
+        <% bill.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div>
+      <%= form.label :patient_name %>
+      <%= form.select :stay_id, Stay.all.collect { |d| [ d.patient.name, d.id ] }, include_blank: true %>
+
+    </div>
+   <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

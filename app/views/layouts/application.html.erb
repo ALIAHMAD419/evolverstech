@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hospital</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+   <ul class="nav nav-pills ">
+       <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-dark btn-lg" href="/welcome/index">Home</a>
+          </li> 
+            <a class="nav-link  btn btn-outline-dark btn-lg" href="/clerk/clerks">Clerks</a>     
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle btn btn-outline-dark btn-lg" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
+            <div class="dropdown-menu btn btn-outline-dark btn-lg">
+              <a class="dropdown-item" href="/clerk/doctors">Doctors</a>
+              <a class="dropdown-item" href="/clerk/patients">Patients</a>
+              <a class="dropdown-item" href="/clerk/appointments">Appointments</a>
+              <a class="dropdown-item" href="/clerk/staffs">Staffs</a>
+              <a class="dropdown-item" href="/clerk/stays">Stays</a>
+              <a class="dropdown-item" href="/clerk/bills">Bills</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/clerk/departments">Departments</a>
+              <a class="dropdown-item" href="/clerk/wards">Wards</a>
+              <a class="dropdown-item" href="/clerk/beds">Beds</a>
+              <a class="dropdown-item" href="/clerk/rooms">Appointment office</a>
+            </div>
+          </li>
+        </ul>
+      </ul>
+  <body>
+    <%= yield %>
+  </body>
+</html>

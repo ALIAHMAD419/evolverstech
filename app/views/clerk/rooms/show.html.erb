@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<h3 class="table-dark col-md-4 offset-md-4 text-center">DATA</h3><br>
+<div class="col-md-5 offset-md-5">
+  <p>
+    <strong>ROOM_ID:</strong>
+    <%= @room.id %>
+  </p>
+   
+  <p>
+    <strong>ROOMS:</strong>
+    <%= @room.room %>
+
+  </p>
+  <%= link_to 'Edit', edit_clerk_room_path(@room),class: "btn btn-outline-dark " %> 
+  <%= link_to 'Back', clerk_rooms_path,class: "btn btn-outline-dark " %>
+</div>

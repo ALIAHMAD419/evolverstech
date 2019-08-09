@@ -1,0 +1,2 @@
+module Clerk::AppointmentsHelper
+end

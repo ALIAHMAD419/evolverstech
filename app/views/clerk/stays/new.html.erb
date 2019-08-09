@@ -1,0 +1,6 @@
+<h1 class="table-dark col-md-4 offset-md-4 text-center">New stay</h1>
+
+<%= render partial: 'form', locals: {stay: @stay, patient: @patient} %>
+<div class="col-md-5 offset-md-5"><br>
+  <%= link_to 'Back', clerk_stays_path,class: "btn btn-outline-dark" %>
+</div>

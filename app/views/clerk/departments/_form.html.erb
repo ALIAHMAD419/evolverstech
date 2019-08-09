@@ -1,0 +1,33 @@
+<div class="col-md-5 offset-md-5">
+
+  <%= form_for [:clerk, @department] do |form| %>
+    
+    <% if department.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(department.errors.count, "error") %> prohibited this department from being saved:</h2>
+
+        <ul>
+        <% department.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    
+    <p>
+      <%= form.label :NAME %><br>
+      <%= form.text_field :name , autofocus: true%>
+    
+    </p>
+   
+
+
+   
+    
+
+   <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

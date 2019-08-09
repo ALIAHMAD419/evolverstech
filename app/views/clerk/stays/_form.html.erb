@@ -1,0 +1,90 @@
+<div class="col-md-5 offset-md-5">
+
+  <%= form_for [:clerk, @stay]  do |form| %>
+
+
+
+    <% if stay.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(stay.errors.count, "error") %> prohibited this stay from being saved:</h2>
+
+        <ul>
+        <% stay.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+  
+    <%= form.fields_for :patient do |patient_form| %>
+     
+      <p>
+        <%= patient_form.label :NAME %><br>
+        <%= patient_form.text_field :name %>
+
+      </p>
+      <p>
+        <%= patient_form.label :AGE %><br>
+        <%= patient_form.select :age ,(18..40),include_blank: true %>
+      </p>
+      <p>
+        <%= patient_form.label :WEIGHT  %><br>
+        <%= patient_form.select :weight,(1..200),include_blank: true %>
+      </p>
+      <p>
+        <%= patient_form.label :DISEASE %><br>
+        <%= patient_form.text_field :dis%>
+      </p>
+      <div>
+        <%= patient_form.label :PHONE %>
+        <%= patient_form.text_field :phone %>
+
+      </div>
+
+      <div>
+        <%= patient_form.label :ADDRESS %>
+        <%= patient_form.text_field :address %>
+
+      </div>
+
+      <div>
+        <%= patient_form.label :DEPARTMENT %>
+        <%= patient_form.select :department_id, Department.all.collect { |d| [ d.name, d.id ] }, include_blank: true %>
+
+      </div>
+    <% end %>
+
+
+   <div>
+      <%= form.label :DOCTOR %>
+      <%= form.select :doctor_id, Doctor.all.collect { |d| [ d.name, d.id ] }, include_blank: true %>
+
+    </div>
+   <div>
+      <%= form.label :WARDS %>
+      <%= form.select :ward_id, Ward.all.collect { |d| [ d.wards_name, d.id ] }, include_blank: true %>
+
+    </div>
+
+
+    <div>
+      <%= form.label :ADDMITED_TIME %>
+   <%= form.datetime_select :a_time, ampm: true ,add_month_numbers: true, class: 'form-control' %>
+    </div>
+
+
+    <div>
+      <%= form.label :DISCHARGE_TIME %>
+   <%= form.datetime_select :d_time, ampm: true ,add_month_numbers: true, class: 'form-control' %>
+    </div>
+
+
+
+
+   <div class="actions">
+      <%= form.submit "save patient & stay" ,class: "btn btn-outline-dark" %>
+    </div>
+  <% end %>
+</div>

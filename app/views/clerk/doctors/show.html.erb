@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+
+<h3 class="table-dark col-md-4 offset-md-4 text-center">DATA</h3><br>
+<div class="col-md-5 offset-md-5">
+    <p>
+      <strong>Name:</strong>
+      <%= @doctor.name %>
+    </p>
+     
+    <p>
+      <strong>SPECIALITY:</strong>
+      <%= @doctor.spec %>
+
+    </p>
+    <p>
+      <strong>DEPARTMENT:</strong>
+      <%= @doctor.department.name %>
+
+    </p>
+    <p>
+      <strong>FEES:</strong>
+      <%= @doctor.fees %>
+
+    </p>
+    <p>
+      <strong>TIME:</strong>
+      <%= @doctor.hours %>
+
+    </p>
+ 
+
+
+  <%= link_to 'Edit', edit_clerk_doctor_path(@doctor) ,class: "btn btn-outline-dark "%>
+  <%= link_to 'Back', clerk_doctors_path ,class: "btn btn-outline-dark "%>
+</div>
