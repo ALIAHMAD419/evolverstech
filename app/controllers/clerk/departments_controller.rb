@@ -1,7 +1,7 @@
 class Clerk::DepartmentsController < ApplicationController
-def index
-    @department = Department.all
-    
+  before_action :authenticate_clerk!
+  def index
+    @department = Department.all  
   end
 
   # GET /departments/1

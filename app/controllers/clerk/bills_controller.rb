@@ -1,7 +1,8 @@
 class Clerk::BillsController < ApplicationController
+  before_action :authenticate_clerk!
 
-def index
-    @bill = Bill.all
+  def index
+     @bill = Bill.all
   end
 
   # GET /bills/1

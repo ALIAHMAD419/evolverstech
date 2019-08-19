@@ -1,5 +1,6 @@
 class Clerk::StaffsController < ApplicationController
-def index
+  before_action :authenticate_clerk!
+  def index
     @staff = Staff.all
   end
 

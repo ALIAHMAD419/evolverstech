@@ -1,6 +1,6 @@
 class Clerk::DoctorsController < ApplicationController
-
-def index
+  before_action :authenticate_clerk!
+  def index
     @doctor = Doctor.all
   end
 
@@ -73,7 +73,7 @@ def index
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
-      params.require(:doctor).permit(:name,:spec,:hours,:fees,:department_id)
+      params.require(:doctor).permit(:name,:spec,:hours,:email,:department_id,:fees,:ward,:password,:password_confirmation)
     end
 
 end

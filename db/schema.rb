@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_09_132629) do
+ActiveRecord::Schema.define(version: 2019_08_19_081930) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "doctor_id"
@@ -70,7 +70,14 @@ ActiveRecord::Schema.define(version: 2019_08_09_132629) do
     t.integer "department_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["department_id"], name: "index_doctors_on_department_id"
+    t.index ["email"], name: "index_doctors_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
   end
 
   create_table "patients", force: :cascade do |t|
@@ -83,7 +90,14 @@ ActiveRecord::Schema.define(version: 2019_08_09_132629) do
     t.integer "department_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["department_id"], name: "index_patients_on_department_id"
+    t.index ["email"], name: "index_patients_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
   end
 
   create_table "rooms", force: :cascade do |t|

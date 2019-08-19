@@ -1,5 +1,5 @@
 class Clerk::WardsController < ApplicationController
-  
+  before_action :authenticate_clerk!
   def index
     @ward = Ward.all
   end

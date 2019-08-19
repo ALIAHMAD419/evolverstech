@@ -1,8 +1,8 @@
 class Clerk::BedsController < ApplicationController
-
-def index
-    @bed = Bed.all
-  end
+  before_action :authenticate_clerk!
+  def index
+      @bed = Bed.all
+    end
 
   # GET /beds/1
   # GET /beds/1.json

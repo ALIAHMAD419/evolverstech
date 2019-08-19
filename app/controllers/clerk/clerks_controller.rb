@@ -2,7 +2,7 @@ class Clerk::ClerksController < ApplicationController
 #before_action :set_clerk, only: [:show, :edit, :update, :destroy]
   # GET /clerks
   # GET /clerks.json
-  # before_action :authenticate_clerk!
+  before_action :authenticate_clerk!
   def index
     @clerk = Clerk.all
   end
@@ -82,7 +82,7 @@ class Clerk::ClerksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def clerk_params
       # params.fetch(:clerk, {})
-      params.require(:clerk).permit(:name,:time,:age)
+      params.require(:clerk).permit(:name,:time,:age,:email,:password,:password_confirmation)
     end
 
 end

@@ -1,5 +1,6 @@
 class Clerk::RoomsController < ApplicationController
-def index
+  before_action :authenticate_clerk!
+  def index
     @room = Room.all
   end
 

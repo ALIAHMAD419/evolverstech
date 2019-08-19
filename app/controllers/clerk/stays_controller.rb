@@ -1,5 +1,5 @@
 class Clerk::StaysController < ApplicationController
-
+  before_action :authenticate_clerk!
   def np
     @stay = Stay.new 
   end

@@ -2,6 +2,9 @@
 
 <div class="sp1">
   <h1  class="table-dark col-md-4 offset-md-4 text-center">Appointment</h1>
+  <div class="col-md-5"> 
+    <h5 class="table-dark col-md-9">Doctor : <%= current_doctor.email%></h5>
+  </div>
   <%= render partial: 'form' %>
   <br><br>
   <h2 class="text-center">HERE IS ALL THE LIST OF THE RECORDS OF APPOINTMENTS</h2>
@@ -36,9 +39,18 @@
 
   <br>
   <div class="row text-center ">  
-    <div class="col-md-1"> 
-      <%= link_to 'BACK', welcome_index_path,class: "btn btn-outline-dark btn-lg " %>
-    </div>
-  </div>
+      <div class="col-md-1">  
+        <%= link_to 'Back', welcome_index_path, class: "btn btn-outline-dark btn-lg" %> 
+      </div>
+          <div class="col-md-1">  
+          <% if doctor_signed_in? %>
+            <%= link_to('Logout', destroy_doctor_session_path, method: :delete ,class: "btn btn-outline-dark btn-lg") %> 
+          <% else %>
+            <li>
+            <%= link_to('Login', new_doctor_session_path ,class: "btn btn-outline-dark btn-lg") %>  
+            </li>
+          <% end %>
+        </div> 
+      </div>
 </div>
 

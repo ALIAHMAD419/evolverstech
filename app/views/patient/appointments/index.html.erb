@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 <div class="sp1">
   <h1  class="table-dark col-md-4 offset-md-4 text-center">Appointment</h1>
+    <div class="col-md-5"> 
+      <h5 class="table-dark col-md-9">Patient : <%= current_patient.email%></h5>
+    </div>
   <br><br>
   <h2 class="text-center">HERE IS ALL THE LIST OF THE RECORDS OF APPOINTMENTS</h2>
   <table class="table table-striped table-dark table-hover text-center col-md-10 offset-md-1">
@@ -32,8 +35,17 @@
   <br>
 
     <div class="row text-center ">  
-      <div class="col-md-1"> 
-        <%= link_to 'BACK', welcome_index_path ,class: "btn btn-outline-dark btn-lg "%>
+      <div class="col-md-1">  
+        <%= link_to 'Back', welcome_index_path, class: "btn btn-outline-dark btn-lg" %> 
       </div>
-    </div>
+          <div class="col-md-1">  
+          <% if patient_signed_in? %>
+            <%= link_to('Logout', destroy_patient_session_path, method: :delete ,class: "btn btn-outline-dark btn-lg") %> 
+          <% else %>
+            <li>
+            <%= link_to('Login', new_patient_session_path ,class: "btn btn-outline-dark btn-lg") %>  
+            </li>
+          <% end %>
+        </div> 
+      </div>
 </div>

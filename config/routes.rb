@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :patients
+  devise_for :doctors
   root 'welcome#index'
   get 'welcome/index'
   # resources :appointments
