@@ -4,7 +4,7 @@ belongs_to :stay, optional: true
   # time = Stay.d_time - Stay.a_time
   
   validates :stay_id, uniqueness: true,presence: true
-  # validates :bill,presence: true
+  validates :bill,presence: true
   before_save :time_difference
   
 

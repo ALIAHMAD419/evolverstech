@@ -7,26 +7,31 @@ RSpec.describe Clerk::AppointmentsController, type: :controller do
   let(:department) {
     Department.create(name: 'cardiology')
   }
+
   let(:doctor) {
-    Doctor.create(name: 'dr.asif', spec: 'heart' ,hours: Time.now+1 , fees: '1000' ,
-      department_id: department.id)
-  } 
+    Doctor.create(name: 'dr.asif', spec: 'heart' ,hours: Time.now+1 , fees: '1000',
+      department_id: department.id , 
+      email: 'abc22@doctor.com', password: '111111',password_confirmation: '111111')
+  }
+  
   let(:room) {
     Room.create(room: '001F')
   }
- let(:patient) {
+  
+  let(:patient) {
     Patient.create(name: 'kashif', age: '20', weight: '80', dis: 'heart', phone: '03314189843', 
-      address: 'johartown',department_id: department.id)
+      address: 'johartown',department_id: department.id , 
+      email: 'abc22@patient.com', password: '111111',password_confirmation: '111111')
   }
 
   let(:valid_attributes) {
-      {start_time: Time.now+1 ,end_time: Time.now+2,room_id: room.id, 
-        doctor_id: doctor.id ,patient_id: patient.id}
+      {start_time: Time.now + 1 ,end_time: Time.now+2, room_id: room.id, 
+        doctor_id: doctor.id, patient_id: patient.id}
     }
 
     let(:invalid_attributes) {
-      skip("Add a hash of attributes invalid for your model")
-      {}
+      {start_time: Time.now + 1 ,end_time: Time.now+2, room_id: room.id, 
+        doctor_id: nil , patient_id: nil}
     }
 
     # This should return the minimal set of values that should be in the session
@@ -34,17 +39,29 @@ RSpec.describe Clerk::AppointmentsController, type: :controller do
     # appointmentsController. Be sure to keep this updated too.
     let(:valid_session) { {} }
 
+    login_clerk
+    
+    # describe "GET #index" do
+    #   it "returns a success response" , create: true do
+    #     appointment = Appointment.new valid_attributes
+    #     appointment.doctor = doctor
+    #     appointment.patient = patient
+    #     appointment.save
+    #     get :index
+    #     expect(response).to be_successful
+    #   end
+    # end   
     describe "GET #index" do
-      it "returns a success response" do
+      it "returns a success response"  do
         Appointment.create! valid_attributes
-        get :index, params: {}, session: valid_session
-        expect(response).to be_successful
+         get :index, params: {}, session: valid_session
+      expect(response).to be_successful
       end
     end
 
     describe "GET #show" do
       it "returns a success response" do
-        appointment = Appointment.create! valid_attributes
+        appointment=Appointment.create! valid_attributes
         get :show, params: {id: appointment.to_param}, session: valid_session
         expect(response).to be_successful
       end
@@ -59,7 +76,7 @@ RSpec.describe Clerk::AppointmentsController, type: :controller do
 
     describe "GET #edit" do
       it "returns a success response" do
-        appointment = Appointment.create! valid_attributes
+       appointment=Appointment.create! valid_attributes
         get :edit, params: {id: appointment.to_param}, session: valid_session
         expect(response).to be_successful
       end
@@ -71,6 +88,7 @@ RSpec.describe Clerk::AppointmentsController, type: :controller do
             expect {
               post :create, params: {appointment: valid_attributes}, session: valid_session
             }.to change(Appointment, :count).by(1)
+
           end
 
           it "redirects to the created appointment" do

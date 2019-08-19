@@ -5,12 +5,14 @@ RSpec.describe Clerk::StaysController, type: :controller do
     Department.create(name: 'cardiology')
   }
   let(:doctor) {
-    Doctor.create(name: 'dr.asif', spec: 'heart' ,hours: Time.now+1 , fees: '1000' ,department_id: department.id)
+    Doctor.create(name: 'dr.asif', spec: 'heart' ,hours: Time.now+1 , fees: '1000' ,department_id: department.id,
+    email: 'abc22@doctor.com', password: '111111',password_confirmation: '111111')
   }
 
   let(:patient) {
     Patient.create(name: 'kashif', age: '20', weight: '80', dis: 'heart', phone: '03314189843', 
-      address: 'johartown',department_id: department.id)
+      address: 'johartown',department_id: department.id,
+      email: 'abc22@doctor.com', password: '111111',password_confirmation: '111111')
   }
   let(:ward) {
     Ward.create(wards_name: 'A',department_id: department.id)
@@ -27,7 +29,7 @@ RSpec.describe Clerk::StaysController, type: :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # staysController. Be sure to keep this updated too.
   let(:valid_session) { {} }
-
+  login_clerk
   describe "GET #index" do
     it "returns a success response" do
       Stay.create! valid_attributes

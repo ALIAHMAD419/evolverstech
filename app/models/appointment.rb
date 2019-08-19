@@ -1,10 +1,10 @@
 class Appointment < ApplicationRecord
-  validates :start_time,:end_time ,presence: true
   belongs_to :doctor
   belongs_to :patient
   belongs_to :room, optional: true
   
-  validates :doctor_id,:patient_id, :room_id,presence: true
+  validates :start_time,:end_time, presence: true
+  validates :doctor_id, :patient_id, :room_id,presence: true
 
   # validate :end_date_after_start_date
 

@@ -19,7 +19,7 @@ RSpec.describe Clerk::StaffsController, type: :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # staffsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
-
+  login_clerk
   describe "GET #index" do
     it "returns a success response" do
       Staff.create! valid_attributes

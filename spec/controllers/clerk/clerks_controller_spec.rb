@@ -4,7 +4,8 @@ RSpec.describe Clerk::ClerksController, type: :controller do
   
 
   let(:valid_attributes) {
-    {name: 'ali', time: Time.now+5, age: '22'}
+    {name: 'ali', time: Time.now+5, age: '22',
+      email: 'abc22@clerk.com', password: '111111',password_confirmation: '111111'}
   }
 
   let(:invalid_attributes) {
@@ -16,6 +17,7 @@ RSpec.describe Clerk::ClerksController, type: :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # clerksController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+  login_clerk
 
   describe "GET #index" do
     it "returns a success response" do

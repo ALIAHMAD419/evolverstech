@@ -4,7 +4,7 @@ class Clerk < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates_format_of :name, :with => /\A[a-z A-Z'-]*\z/ 
-  validates :age,:name,:time,presence: true
+  validates :age, :name, :time, presence: true
   # validate :end_date_after_start_date
 
   # devise :database_authenticatable, :registerable,

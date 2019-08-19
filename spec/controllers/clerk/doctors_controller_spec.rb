@@ -8,7 +8,8 @@ RSpec.describe Clerk::DoctorsController, type: :controller do
 
   let(:valid_attributes) {
     {name: 'dr.asif', spec: 'heart' ,hours: Time.now+1 , fees: '1000',
-    department_id: department.id}
+    department_id: department.id ,
+    email: 'abc22@doctor.com', password: '111111',password_confirmation: '111111'}
   }
 
   let(:invalid_attributes) {
@@ -20,7 +21,7 @@ RSpec.describe Clerk::DoctorsController, type: :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # doctorsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
-
+  login_clerk
   describe "GET #index" do
     it "returns a success response" do
       Doctor.create! valid_attributes
