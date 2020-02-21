@@ -23,8 +23,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 #gem for devise login
 gem 'devise'
-
-
+gem 'erb_lint', require: false
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -42,7 +41,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   #rspec test frame work 
-   gem 'rspec-rails', '~> 3.8'
+   # gem 'rspec-rails', '~> 3.8'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
