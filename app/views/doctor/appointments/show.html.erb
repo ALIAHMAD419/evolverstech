@@ -6,26 +6,17 @@
     <strong>DOCTOR NAME:</strong>
     <%= @appointment.doctor.name %>
   </p>
-   
   <p>
     <strong>PATIENT NAME:</strong>
     <%= @appointment.patient.name %>
-
   </p>
-
   <p>
     <strong>START TIME:</strong>
     <%= @appointment.start_time %>
-
   </p>
   <p>
     <strong>END TIME:</strong>
     <%= @appointment.end_time %>
-
   </p>
-
-
-
-
-  <%= link_to 'Back', doctor_appointments_path ,class: "btn btn-outline-dark "%>
+  <%= link_to 'Back', doctor_appointments_path ,class: "btn btn-outline-dark " %>
 </div>

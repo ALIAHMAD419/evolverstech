@@ -1,44 +1,33 @@
+<%= render partial: 'layouts/layout' %>
+
 <p id="notice"><%= notice %></p>
 <h3 class="table-dark col-md-4 offset-md-4 text-center">DATA</h3><br>
-  <div class="col-md-5 offset-md-5">
-    <p>
-      <strong>Name:</strong>
-      <%= @patient.name %>
-    </p>
-     
-    <p>
-      <strong>AGE:</strong>
-      <%= @patient.age %>
-
-    </p>
-    <p>
-      <strong>WEIGHT:</strong>
-      <%= @patient.weight %>
-
-    </p>
-    <p>
-      <strong>DISEASE:</strong>
-      <%= @patient.dis %>
-
-    </p>
-      
-    <p>
-      <strong>PHONE:</strong>
-      <%= @patient.phone%>
-
-    </p>
-    <p>
-      <strong>ADDRESS:</strong>
-      <%= @patient.address %>
-
-    </p>
-    <p>
-      <strong>DEPARTMENT:</strong>
-      <%#= @patient.department.name %>
-
-    </p>
-   
-  <br><br>
-    <%= link_to 'Edit',  edit_clerk_patient_path(@patient),class: "btn btn-outline-dark " %> 
-    <%= link_to 'Back', clerk_patients_path,class: "btn btn-outline-dark " %>
+<div class="col-md-5 offset-md-5">
+  <p>
+    <strong>Name:</strong>
+    <%= @patient.name %>
+  </p>
+  <p>
+    <strong>AGE:</strong>
+    <%= @patient.age %>
+  </p>
+  <p>
+    <strong>WEIGHT:</strong>
+    <%= @patient.weight %>
+  </p>
+  <p>
+    <strong>DISEASE:</strong>
+    <%= @patient.dis %>
+  </p>
+  <p>
+    <strong>PHONE:</strong>
+    <%= @patient.phone %>
+  </p>
+  <p>
+    <strong>ADDRESS:</strong>
+    <%= @patient.address %>
+  </p>
+<br><br>
+  <%= link_to 'Edit',  edit_clerk_patient_path(@patient),class: "btn btn-outline-dark " %>
+  <%= link_to 'Back', clerk_patients_path,class: "btn btn-outline-dark " %>
 </div>

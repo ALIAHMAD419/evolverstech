@@ -1,65 +1,44 @@
 class Clerk::PatientsController < ApplicationController
   before_action :authenticate_clerk!
+  
   def index
     @patient = Patient.all
   end
 
-  # GET /patients/1
-  # GET /patients/1.json
   def show
     @patient = Patient.find(params[:id])
   end
 
-  # GET /patients/new
   def new
     @patient = Patient.new
   end
 
-  # GET /patients/1/edit
   def edit
     @patient = Patient.find(params[:id])
   end
 
-  # POST /patients
-  # POST /patients.json
   def create
     @patient = Patient.new(patient_params)
-
-    respond_to do |format|
-      if @patient.save
-        format.html { redirect_to clerk_patients_path, notice: 'Patient was successfully created.' }
-        format.json { render :show, status: :created, location: @patient }
-      else
-        format.html { render :new }
-        format.json { render json: @patient.errors, status: :unprocessable_entity }
-      end
+    if @patient.save
+      redirect_to clerk_patients_path
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /patients/1
-  # PATCH/PUT /patients/1.json
   def update
     @patient = Patient.find(params[:id])
-    respond_to do |format|
-      if @patient.update(patient_params)
-        format.html { redirect_to clerk_patients_path, notice: 'Patient was successfully updated.' }
-        format.json { render :show, status: :ok, location: @patient }
-      else
-        format.html { render :edit }
-        format.json { render json: @patient.errors, status: :unprocessable_entity }
-      end
+    if @patient.update(patient_params)
+      redirect_to clerk_patients_path
+    else
+      render :edit
     end
   end
 
-  # DELETE /patients/1
-  # DELETE /patients/1.json
   def destroy
     @patient = Patient.find(params[:id])
     @patient.destroy
-    respond_to do |format|
-      format.html { redirect_to clerk_patients_path, notice: 'Patient was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to clerk_patients_path
   end
 
   private
@@ -70,8 +49,6 @@ class Clerk::PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:name,:age,:weight,:dis,:department_id,:ward,:phone,:address,:email,:password,:password_confirmation)
+      params.require(:patient).permit(:name,:age,:weight,:dis,:phone,:address,:email,:password,:password_confirmation)
     end
-
-
 end

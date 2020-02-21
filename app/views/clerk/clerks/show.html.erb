@@ -1,3 +1,4 @@
+<%= render partial: 'layouts/layout' %>
 <p id="notice"><%= notice %></p>
 
   <h3 class="table-dark col-md-4 offset-md-4 text-center">DATA</h3><br>
@@ -6,19 +7,14 @@
     <strong>Name:</strong>
     <%= @clerk.name %>
   </p>
-   
   <p>
     <strong>TIME:</strong>
     <%= @clerk.time %>
-
   </p>
-
   <p>
     <strong>Age:</strong>
     <%= @clerk.age %>
-
   </p>
-
-  <%= link_to 'Edit', edit_clerk_clerk_path(@clerk) ,class: "btn btn-outline-dark "%> 
+  <%= link_to 'Edit', edit_clerk_clerk_path(@clerk) ,class: "btn btn-outline-dark " %>
   <%= link_to 'Back', clerk_clerks_path,class: "btn btn-outline-dark" %>
 </div>

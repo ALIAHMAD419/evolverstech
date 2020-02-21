@@ -1,2 +1,0 @@
-module Clerk::StaffsHelper
-end

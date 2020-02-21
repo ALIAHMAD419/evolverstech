@@ -1,6 +1,10 @@
-<h1  class="table-dark col-md-4 offset-md-4 text-center">New Appointment</h1>
+<%= render partial: 'layouts/layout' %>
 
+<h1 class="table-dark col-md-4 offset-md-4 text-center">New Appointment</h1>
+<% if flash[:error] %>
+  <div class="notice text-center"><h2><%= flash[:error] %></h2></div>
+<% end %>
 <%= render partial: 'form', locals: {appointment: @appointment} %>
 <div class="col-md-5 offset-md-5"><br>
-  <%= link_to 'Back', clerk_appointments_path,class: "btn btn-outline-dark"  %>
+  <%= link_to 'Back', clerk_appointments_path,class: "btn btn-outline-dark" %>
 </div>

@@ -1,56 +1,44 @@
 <%= form_for [:clerk, @clerk]  do |form| %>
  <div class="col-md-5 offset-md-5">
-   
   <% if clerk.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(clerk.errors.count, "error") %> prohibited this clerk from being saved:</h2>
-
       <ul>
       <% clerk.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
-  <% end %> 
+  <% end %>
   <p>
     <%= form.label :NAME %><br>
-    <%= form.text_field :name , autofocus: true, placeholder: "Name"%>
-      <%#= form.validates_format_of :phone, :with => /^[0-9]*$/, :message => “Please use
-only numbers”%>
+    <%= form.text_field :name , autofocus: true, placeholder: "Name" %>
   </p>
- 
   <p>
     <%= form.label :TIME %><br>
-    <%#= form.datetime_select :time, selected: Date.today, min: 5.days.ago, max: 1.year.from_now %>
     <%= form.datetime_select :time , ampm: true ,add_month_numbers: true, :start_year => Date.current.year, :end_year => Date.current.year + 2  ,include_blank: true %>
-
   </p>
-  
   <p>
     <%= form.label :AGE %><br>
     <%= form.select :age ,(18..40),include_blank: true, placeholder: "Age" %>
   </p>
- 
   <div class="field">
-    <%= form.label :email %><br />
+    <%= form.label :email %><br>
     <%= form.email_field :email, autocomplete: "email", placeholder: "user@clerk.com" %>
   </div>
-
   <div class="field">
     <%= form.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= form.password_field :password, autocomplete: "new-password" ,placeholder: "Password"%>
+    <% end %><br>
+    <%= form.password_field :password, autocomplete: "new-password" ,placeholder: "Password" %>
   </div>
-
   <div class="field">
-    <%= form.label :password_confirmation %><br />
-    <%= form.password_field :password_confirmation, autocomplete: "new-password" , placeholder: "Confirm Password"%>
+    <%= form.label :password_confirmation %><br>
+    <%= form.password_field :password_confirmation, autocomplete: "new-password" , placeholder: "Confirm Password" %>
   </div><br>
    <div class="actions">
-      <%= form.submit class: "btn btn-outline-dark"%>
+      <%= form.submit class: "btn btn-outline-dark" %>
     </div>
-
-  <% end %>
- </div> 
+  </div>
+<% end %>

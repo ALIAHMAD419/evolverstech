@@ -1,6 +1,8 @@
+<%= render partial: 'layouts/layout' %>
+
 <h1 class="table-dark col-md-4 offset-md-4 text-center">New Patient</h1>
 
 <%= render partial: 'form', locals: {patient: @patient} %>
 <div class="col-md-5 offset-md-5"><br>
-  <%= link_to 'Back', clerk_patients_path ,class: "btn btn-outline-dark"%>
+  <%= link_to 'Back', clerk_patients_path ,class: "btn btn-outline-dark" %>
 </div>

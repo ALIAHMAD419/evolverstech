@@ -1,26 +1,28 @@
+<%= render partial: 'layouts/layout' %>
 <div class="sp1">
-  
+  <% if flash[:error] %>
+    <div class="notice"><h2><%= flash[:error] %></h2></div>
+  <% end %>
   <h1 class="table-dark col-md-4 offset-md-4 text-center">Clerks</h1>
-  <div class="col-md-5">  
-    <h5 class="table-dark col-md-9">LOGGIN CLERK : <%= current_clerk.email%></h5> 
+  <div class="col-md-5">
+    <h5 class="table-dark col-md-9">LOGGIN CLERK : <%= current_clerk.email %></h5>
     <br>
-      <%= link_to 'New Clerk', new_clerk_clerk_path, class: "btn btn-outline-dark btn-lg "  %>
+      <%= link_to 'New Clerk', new_clerk_clerk_path, class: "btn btn-outline-dark btn-lg " %>
     <br>
   </div>
   <h2 class="text-center ">HERE IS ALL THE LIST OF THE RECORDS OF CLERKS</h2>
   <br>
-   <table class="table table-striped table-dark table-hover text-center col-md-10 offset-md-1" >
+   <table class="table table-striped table-dark table-hover text-center col-md-10 offset-md-1">
     <thead>
       <tr>
         <th>#</th>
-        <th>NAME</th> 
+        <th>NAME</th>
         <th>TIME</th>
         <th>AGE</th>
         <th>EMAIL</th>
-        <th colspan="3" >FUNCTIONS</th>
+        <th colspan="3">FUNCTIONS</th>
       </tr>
    </thead>
-   
     <% @clerk.each do |clerk| %>
       <tr>
         <td><%= clerk.id %></td>
@@ -34,27 +36,19 @@
       </tr>
     <% end %>
   </table>
-
   <br>
-
-    <div class="row text-center ">  
-      <div class="col-md-1">  
-        <%= link_to 'Back', welcome_index_path, class: "btn btn-outline-dark btn-lg" %> 
-      </div>
-          <div class="col-md-1">  
-          <% if clerk_signed_in? %>
-            <%= link_to('Logout', destroy_clerk_session_path, method: :delete ,class: "btn btn-outline-dark btn-lg") %> 
-          <% else %>
-            <li>
-            <%= link_to('Login', new_clerk_session_path ,class: "btn btn-outline-dark btn-lg") %>  
-            </li>
-          <% end %>
-        </div> 
-      </div>
+  <div class="row text-center ">
+    <div class="col-md-1">
+      <%= link_to 'Back', welcome_index_path, class: "btn btn-outline-dark btn-lg" %>
+    </div>
+    <div class="col-md-1">
+      <% if clerk_signed_in? %>
+        <%= link_to('Logout', destroy_clerk_session_path, method: :delete ,class: "btn btn-outline-dark btn-lg") %>
+      <% else %>
+        <li>
+          <%= link_to('Login', new_clerk_session_path ,class: "btn btn-outline-dark btn-lg") %>
+        </li>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-
